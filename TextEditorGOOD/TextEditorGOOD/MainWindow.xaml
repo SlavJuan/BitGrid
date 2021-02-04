@@ -9,6 +9,25 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="#3C3F58">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#ffcbce"/>
+            <Setter Property="Background" Value="#2E3047"/>
+            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis.ttf"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#707793"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#43455C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -43,25 +62,7 @@
                    VerticalAlignment="Center"/>
 
             <Button Content="File"
-                    Foreground="#ffcbce"
-                    Grid.Column="1"
-                    FontWeight="Medium">
-
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis.ttf"/>
-                        <Setter Property="Background" Value="#2E3047"/>
-
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#707793"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseCaptured" Value="True">
-                                <Setter Property="Background" Value="#43455C"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                    Grid.Column="1">
 
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -77,26 +78,31 @@
                 </Button.Template>
             </Button>
 
-            <TextBlock Text="File"
-                       Foreground="#ffcbce"
-                       Grid.Column="2"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Dosis"
-                       FontWeight="Medium"/>
-            <TextBlock Text="Edit"
-                       Foreground="#ffcbce"
-                       Grid.Column="3"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Dosis"
-                       FontWeight="Medium"/>
+            <Button Content="Edit"
+                    Grid.Column="2">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Height="25"
+                                BorderThickness="0"
+                                Background="{TemplateBinding Background}">
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
         </Grid>
 
         <RichTextBox Margin="3.5"
                      Grid.Row="2"
                      Background="#3C3F58"
-                     BorderThickness="0">
+                     BorderThickness="0"
+                     Foreground="#ffcbce"
+                     FontFamily="Fonts/#Dosis.ttf">
 
         </RichTextBox>
 
