@@ -12,7 +12,7 @@ module.exports = {
                 message.channel.send('I deleted as many messages as I could.').then(message => message.delete(5000))
             })
         } catch(err) {
-            message.channel.send("Can't delete more messages")
+            return message.channel.send("Can't delete more messages")
         }
     }
 }
