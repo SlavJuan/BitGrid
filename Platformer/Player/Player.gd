@@ -7,8 +7,8 @@ export (float) var FRICITON = 0.25
 export (int) var GRAVITY = 150
 export (int) var JUMP_FORCE = 72
 
-var just_jumped = false setget _set_invincible
-var invincible = false
+var just_jumped = false
+var invincible = false setget _set_invincible
 
 var motion = Vector2.ZERO
 
@@ -16,6 +16,14 @@ onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
 onready var blinkAnimator = $BlinkAnimator
 onready var coyoteJumpTimer = $CoyoteJumpTimer
+onready var stats = $PlayerStats
+
+func _ready():
+	Maininstances.Player = self
+
+func queue_free():
+	Maininstances.Player = self
+	.queue_free()
 
 func _set_invincible(value):
 	invincible = value
@@ -91,7 +99,18 @@ func move():
 		position.y = last_position.y
 		coyoteJumpTimer.start()
 
-
-func _on_Hurtbox_hit(_damage):
+func _on_Hurtbox_hit(damage):
 	if not invincible:
+		stats.health -= damage
 		blinkAnimator.play("Blink")
+
+
+func _on_PickupDetector_area_entered(area):
+	if area is Pickup:
+		area._pickup()
+
+signal player_died
+
+func _on_PlayerStats_player_died():
+	emit_signal("player_died")
+	queue_free()
