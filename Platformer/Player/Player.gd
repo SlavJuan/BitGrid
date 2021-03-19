@@ -5,7 +5,7 @@ export (int) var ACCELERATION = 256
 export (int) var MAX_SPEED = 48
 export (float) var FRICITON = 0.25
 export (int) var GRAVITY = 150
-export (int) var JUMP_FORCE = 72
+export (int) var JUMP_FORCE = 75
 
 var just_jumped = false
 var invincible = false setget _set_invincible

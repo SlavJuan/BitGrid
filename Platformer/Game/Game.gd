@@ -14,9 +14,9 @@ func _ready():
 	VisualServer.set_default_clear_color(Color(0.941176, 0.964706, 0.941176))
 
 func generate_level():
-	var LEFT = load("res://Levels/Left/" + str(int(rand_range(-1, 2))) + ".tscn")
-	var CENTER = load("res://Levels/Center/" + str(int(rand_range(-1, 2))) + ".tscn")
-	var RIGHT = load("res://Levels/Right/" + str(int(rand_range(-1, 2))) + ".tscn")
+	var LEFT = load("res://Levels/Left/" + str(int(rand_range(-1, 4))) + ".tscn")
+	var CENTER = load("res://Levels/Center/" + str(int(rand_range(-1, 4))) + ".tscn")
+	var RIGHT = load("res://Levels/Right/" + str(int(rand_range(-1, 4))) + ".tscn")
 	
 	var LEVELS = [LEFT, CENTER, RIGHT]
 	var positions = [leftpos, centerpos,rightpos]
