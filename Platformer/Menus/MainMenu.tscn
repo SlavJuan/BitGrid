@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Theme/DefaultTheme.tres" type="Theme" id=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titel" type="Label" parent="."]
+anchor_left = 0.056
+anchor_top = 0.156
+anchor_right = 0.944
+anchor_bottom = 0.356
+margin_left = 0.04
+margin_top = -0.04
+margin_right = -0.0400085
+margin_bottom = -0.0400009
+text = "untitled-platformer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.525
+anchor_top = 0.667
+anchor_right = 0.525
+anchor_bottom = 0.667
+margin_left = -28.0
+margin_top = -20.03
+margin_right = 28.0
+margin_bottom = 19.97
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+margin_right = 56.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 56, 18 )
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 56.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 56, 18 )
+text = "Quit"
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]

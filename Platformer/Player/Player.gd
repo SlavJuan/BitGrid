@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 #variables
 export (int) var ACCELERATION = 256
-export (int) var MAX_SPEED = 48
-export (float) var FRICITON = 0.25
+export (int) var MAX_SPEED = 40
+export (float) var FRICITON = 0.3
 export (int) var GRAVITY = 150
 export (int) var JUMP_FORCE = 75
 

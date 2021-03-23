@@ -6,17 +6,19 @@ onready var rightpos = $Positions/Right
 
 func _ready():
 	Engine.set_target_fps(Engine.get_iterations_per_second())
-	
 	randomize()
 	generate_level()
 	
 	Maininstances.Player.connect("player_died", self, "_on_Player_died")
-	VisualServer.set_default_clear_color(Color(0.941176, 0.964706, 0.941176))
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("ui_reload"):
+		var _r = get_tree().reload_current_scene()
 
 func generate_level():
-	var LEFT = load("res://Levels/Left/" + str(int(rand_range(-1, 5))) + ".tscn")
+	var LEFT = load("res://Levels/Left/" + str(int(rand_range(-1, 6))) + ".tscn")
 	var CENTER = load("res://Levels/Center/" + str(int(rand_range(-1, 6))) + ".tscn")
-	var RIGHT = load("res://Levels/Right/" + str(int(rand_range(-1, 5))) + ".tscn")
+	var RIGHT = load("res://Levels/Right/" + str(int(rand_range(-1, 6))) + ".tscn")
 	
 	var LEVELS = [LEFT, CENTER, RIGHT]
 	var positions = [leftpos, centerpos,rightpos]
@@ -27,4 +29,4 @@ func generate_level():
 		add_child(level)
 
 func _on_Player_died():
-	var _r = get_tree().reload_current_scene()
+	var _r = get_tree().change_scene("res://Menus/MainMenu.tscn")

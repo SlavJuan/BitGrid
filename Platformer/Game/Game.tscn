@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CollisionBoxes/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/Environment/ParallaxBackground.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 240, 1 )
@@ -56,8 +57,10 @@ damage = 10
 [node name="Collider" parent="Borders/Hitbox" index="0"]
 shape = SubResource( 3 )
 
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 16, 64 )
+position = Vector2( 20, 64 )
 z_index = 1
 collision/safe_margin = 0.1
 
