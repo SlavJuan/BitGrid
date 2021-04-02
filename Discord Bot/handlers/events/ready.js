@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 const command_handler = require('../../commands');
 
+const { prefix } = require('../../config/config.json')
+
 module.exports = {
-    type = "ready",
+    type: "ready",
     async run(client) {
         console.log(`${client.user.username} is up and running!`);
         client.user.setActivity(`${prefix}h, ${prefix}-help`, {type: "WATCHING"})

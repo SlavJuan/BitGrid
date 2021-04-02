@@ -5,12 +5,12 @@ module.exports = {
     async initCommands(client) {
         client.commands = new Discord.Collection
 
-        const commandFiles = (await fs.promises.readdir('./commands', {
+        const commandFiles = (await fs.promises.readdir('./handlers/commands', {
             encoding: "utf-8"
         })).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            const command = require(`./commands/${file}`)
+            const command = require(`./handlers/commands/${file}`)
             try {
                 client.commands.set(command.name, command)
             } catch(err) {
